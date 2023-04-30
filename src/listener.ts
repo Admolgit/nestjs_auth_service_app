@@ -13,7 +13,6 @@ async function bootstrap() {
       },
     },
   });
-  
   await app.listen().then(() => console.log('Microservice started on AUTH_MICROSERVICES'));
 }
 bootstrap();

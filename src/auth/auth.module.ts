@@ -5,7 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { PassportModule } from '@nestjs/passport';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
-import { UserSchema } from './models/user.models.schema';
+import { User, UserSchema } from './models/user.models.schema';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { LocalStrategy } from './local.strategy';
 // import { JwtStrategy } from './jwt.strategy';
@@ -38,10 +38,7 @@ import { LocalStrategy } from './local.strategy';
         }
       }
     }),
-    MongooseModule.forFeature([{
-      name: 'User',
-      schema: UserSchema
-    }])
+    MongooseModule.forFeature([{name: User.name, schema: UserSchema}])
   ],
   controllers: [AuthController],
   providers: [AuthService, LocalStrategy]

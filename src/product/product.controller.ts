@@ -14,17 +14,20 @@ export class ProductController {
     return this.productService.all();
   }
 
-  @MessagePattern('product_created')
-  @Post()
-  async create(product: any) {
-    console.log('create', product);
-    await this.productService.create({
-      id: product.id,
-      name: product.name,
-      description: product.description,
-      price: product.price,
-      quantity: product.quantity
-    });
+  @EventPattern({cmd: 'product_created'})
+  async createProduct(product: any) {
+    return await this.productService.createProd(product);
+  }
 
+  @EventPattern('products_updated')
+  async updateProduct(product: any) {
+    console.log(product, 'product updated')
+    return await this.productService.updateProd(product.id, product)
+  }
+
+  @EventPattern('products_deleted')
+  async updateDeleted(id: number) {
+    console.log(id, 'deleted');
+    return await this.productService.deleteProduct(id)
   }
 }

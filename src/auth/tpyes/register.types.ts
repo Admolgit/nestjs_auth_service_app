@@ -3,11 +3,11 @@ import {IsEmail, IsNotEmpty, IsEnum, IsString, IsNumber, MinLength} from 'class-
 export class RegisterDTO {
   @IsNotEmpty()
   @IsString()
-  readonly fullName: string;
+  readonly username: string;
 
-  @IsNotEmpty()
-  @IsEmail({}, {message: 'Please enter valid email address'})
-  readonly email: string
+  // @IsNotEmpty()
+  // @IsEmail({}, {message: 'Please enter valid email address'})
+  // readonly email: string
 
   @IsNotEmpty()
   @IsString()
