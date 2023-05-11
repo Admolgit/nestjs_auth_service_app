@@ -11,6 +11,8 @@ async function bootstrap() {
       queueOptions: {
         durable: false
       },
+      noAck: false,
+      prefetchCount: 1,
     },
   });
   await app.listen().then(() => console.log('Microservice started on AUTH_MICROSERVICES'));
