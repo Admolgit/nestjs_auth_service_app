@@ -4,7 +4,9 @@ import { Strategy } from "passport-local";
 import { ExtractJwt } from "passport-jwt";
 
 export class JwtStrategy extends PassportStrategy(Strategy) {
-  constructor(configService: ConfigService) {
+  constructor(
+    configService: ConfigService
+  ) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
